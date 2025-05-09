@@ -1,7 +1,7 @@
 import SmeeClient from 'smee-client';
 
 const smee = new SmeeClient({
-  source: 'https://smee.io/KNpRk0s5DGwxR51E',
+  source: 'https://smee.io/meKdYxyKaQmbgBP',
   target: 'http://localhost:3000/webhook/clickup',
   logger: console
 });

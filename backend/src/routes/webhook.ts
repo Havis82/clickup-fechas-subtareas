@@ -33,13 +33,13 @@ interface Subtask {
 // Custom fields have been manually created in ClickUp.
 // TODO: Replace with application specific field IDs to run
 enum RollupFieldsIds {
-    AutoRollup = 'a571297b-82bb-4063-844a-72ba69808e33',
-    RollupValue = '61dea4a8-5803-4ddc-a2bf-94709bbbdf05',
+    AutoRollup = '704e75a8-8b7b-42f4-a6df-8fc8bd64e0d0',
+    RollupValue = '813662d6-fbd4-4f7c-888b-6e338179b975',
 }
 
 // Access token hard coded from login redirect page
 // Needs to be changed to get from DB
-const accessToken = 'oauth_access_token';
+const accessToken = '158426612_90431d450f39f94b8a802f54a2f0c45e898d82c1f41bedbd650fb3ba4649e7ac';
 
 function verifyWebhookSignature(req: express.Request, secret: string): boolean {
   const signature = req.headers['x-signature'] as string;
