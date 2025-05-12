@@ -4,9 +4,8 @@ import passport from 'passport';
 const router = express.Router();
 
 router.get('/clickup', passport.authenticate('clickup', { scope: ['task:read', 'task:write'] }));
-router.get('/auth/clickup', passport.authenticate('clickup'));
 
-router.get('/clickup/callback', 
+router.get('/callback', 
   passport.authenticate('clickup', { failureRedirect: '/login' }),
   (req: express.Request, res: express.Response) => {
     // Successful authentication
