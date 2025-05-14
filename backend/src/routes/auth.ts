@@ -3,27 +3,10 @@ import passport from 'passport';
 
 const router = express.Router();
 
-router.get('/clickup', (req, res, next) => {
-  console.log('🔁 /auth/clickup route hit');
-  next();
-}, passport.authenticate('clickup', { scope: ['task:read', 'task:write'] }));
+// 👉 Esta ruta lanza el inicio de sesión con ClickUp
+router.get('/clickup', passport.authenticate('clickup', { scope: ['task:read', 'task:write'] }));
 
-router.get('/', 
-  passport.authenticate('clickup', { failureRedirect: '/login' }),
-  (req: express.Request, res: express.Response) => {
-    // Successful authentication
-    if (req.user && 'accessToken' in req.user) {
-      res.send(`
-        Authentication successful!<br>
-        Your access token is: ${req.user.accessToken}<br>
-        <a href="/">Go to Home</a>
-      `);
-    } else {
-      res.redirect('/');
-    }
-  }
-);
-
+// 👉 Ruta para cerrar sesión (opcional pero útil)
 router.get('/logout', (req: express.Request, res: express.Response) => {
   req.logout((err: any) => {
     if (err) {
