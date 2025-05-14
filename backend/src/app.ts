@@ -44,6 +44,11 @@ app.get('/', (req, res) => {
   }
 });
 
+app.get('/api/test', (req, res) => {
+  console.log('✅ /api/test route reached');
+  res.send('API route is working');
+});
+
 app.use(tokenRefresherMiddleware);
 
 app.use('/auth', authRoutes);
