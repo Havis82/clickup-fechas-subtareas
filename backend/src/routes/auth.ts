@@ -3,7 +3,10 @@ import passport from 'passport';
 
 const router = express.Router();
 
-router.get('/clickup', passport.authenticate('clickup', { scope: ['task:read', 'task:write'] }));
+router.get('/clickup', (req, res, next) => {
+  console.log('🔁 /auth/clickup route hit');
+  next();
+}, passport.authenticate('clickup', { scope: ['task:read', 'task:write'] }));
 
 router.get('/', 
   passport.authenticate('clickup', { failureRedirect: '/login' }),
