@@ -30,4 +30,6 @@ router.get('/logout', (req: express.Request, res: express.Response) => {
   });
 });
 
+console.log('✅ Auth routes mounted');
+
 export default router;
