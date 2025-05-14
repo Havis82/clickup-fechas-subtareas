@@ -31,18 +31,22 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Add this new route
-app.get('/', (req, res) => {
-  if (req.isAuthenticated()) {
-    res.send(`
-      Authenticated! You can now use the ClickUp API.<br>
-      <a href="/clickup/user">Get User Info</a><br>
-      <a href="/clickup/workspaces">Get Workspaces</a><br>
-      <a href="/auth/logout">Logout</a>
-    `);
-  } else {
-    res.send('Welcome! Please <a href="/auth/clickup">login with ClickUp</a>');
+app.get('/', 
+  passport.authenticate('clickup', { failureRedirect: '/login' }),
+  (req, res) => {
+    if (req.user && 'accessToken' in req.user) {
+      res.send(`
+        ✅ Authentication successful!<br>
+        Your access token is: ${req.user.accessToken}<br>
+        <a href="/clickup/user">Get User Info</a><br>
+        <a href="/clickup/workspaces">Get Workspaces</a><br>
+        <a href="/auth/logout">Logout</a>
+      `);
+    } else {
+      res.redirect('/');
+    }
   }
-});
+);
 
 app.get('/api/test', (req, res) => {
   console.log('✅ /api/test route reached');
