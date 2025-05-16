@@ -7,7 +7,7 @@ import { errorHandler } from './middleware/errorHandler';
 import { tokenRefresherMiddleware } from './middleware/tokenRefresher';
 import webhookRoutes from './routes/webhook';
 import bodyParser from 'body-parser';
-import './smee-client';  // Add this line in development
+//import './smee-client';  // Add this line in development
 import dotenv from 'dotenv';
 
 dotenv.config();
