@@ -180,6 +180,11 @@ router.post('/clickup', async (req, res) => {
     return res.status(401).send('Invalid signature');
   }
 
+router.post('/clickup', (req, res) => {
+  console.log('📩 Webhook recibido');
+  res.status(200).send('OK');
+});
+
   const { event, task_id, webhook_id } = req.body;
 
   // Handle different webhook events
