@@ -18,7 +18,7 @@ const app = express();
 app.use(express.json());
 
 // Use raw body parser for webhook route
-app.use('/webhook/clickup', bodyParser.raw({ type: 'application/json' }));
+// app.use('/webhook/clickup', bodyParser.raw({ type: 'application/json' }));
 
 // Use JSON body parser for other routes
 app.use(session({
