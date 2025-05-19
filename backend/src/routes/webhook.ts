@@ -178,7 +178,7 @@ router.post('/clickup', async (req, res) => {
   // Verify the webhook signature
   // if (!verifyWebhookSignature(req, process.env.CLICKUP_WEBHOOK_SECRET!)) {
     // return res.status(401).send('Invalid signature');
-  }
+  // }
 
   console.log('📩 Webhook recibido');
 
