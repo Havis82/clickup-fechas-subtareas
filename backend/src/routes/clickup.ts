@@ -42,7 +42,7 @@ router.get('/user', isAuthenticated, async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch user info' });
   }
 }) as express.RequestHandler
-};
+);
 
 // Get workspaces
 router.get('/workspaces', isAuthenticated, async (req, res) => {
@@ -74,7 +74,7 @@ router.get('/tasks/:listId', isAuthenticated, async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch tasks' });
   }
 }) as express.RequestHandler
-};
+);
 
 // Create a webhook
 router.post('/webhook', isAuthenticated, async (req: express.Request, res: express.Response) => {
