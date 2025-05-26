@@ -29,8 +29,8 @@ app.use(session({
   saveUninitialized: false
 }));
 
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.initialize() as RequestHandler);
+app.use(passport.session() as RequestHandler);
 
 // Add this new route
 app.get('/', 
