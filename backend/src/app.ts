@@ -33,7 +33,7 @@ app.use(passport.session());
 // Add this new route
 app.get('/', 
   passport.authenticate('clickup', { failureRedirect: '/login' }),
-  (req, res) => {
+  (req: Request, res: Response) => {
     if (req.user && 'accessToken' in req.user) {
       res.send(`
         ✅ Authentication successful!<br>
