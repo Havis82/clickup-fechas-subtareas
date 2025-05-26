@@ -63,7 +63,7 @@ async function syncDueDateToSubtasks(parentTaskId: string) {
 }
 
 // Manejador del webhook
-router.post('/clickup', async (req, res) => {
+router.post('/clickup', async (req: Request, res: Response) => {
   const { event, task_id } = req.body;
 
   if (['taskCreated', 'taskUpdated'].includes(event)) {
