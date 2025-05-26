@@ -1,4 +1,5 @@
 import express from 'express';
+import type { Request, Response } from 'express';
 import session from 'express-session';
 import passport from './config/passport';
 import authRoutes from './routes/auth';
