@@ -29,51 +29,60 @@ const getAccessToken = (req: express.Request): string => {
 };
 
 // Get user info
-router.get('/user', isAuthenticated, async (req, res) => {
-  try {
-    const response = await axios.get('https://api.clickup.com/api/v2/user', {
-      headers: {
-        'Authorization': `Bearer ${getAccessToken(req)}`
-      }
-    });
-    res.json(response.data);
-  } catch (error) {
-    console.error('Error fetching user info:', error);
-    res.status(500).json({ error: 'Failed to fetch user info' });
-  }
-}) as express.RequestHandler
+router.get(
+  '/user',
+  isAuthenticated,
+  (async (req, res) => {
+    try {
+      const response = await axios.get('https://api.clickup.com/api/v2/user', {
+        headers: {
+          'Authorization': `Bearer ${getAccessToken(req)}`
+        }
+      });
+      res.json(response.data);
+    } catch (error) {
+      console.error('Error fetching user info:', error);
+      res.status(500).json({ error: 'Failed to fetch user info' });
+    }
+  }) as express.RequestHandler
 );
 
 // Get workspaces
-router.get('/workspaces', isAuthenticated, async (req, res) => {
-  try {
-    const response = await axios.get('https://api.clickup.com/api/v2/team', {
-      headers: {
-        'Authorization': `Bearer ${getAccessToken(req)}`
-      }
-    });
-    res.json(response.data);
-  } catch (error) {
-    console.error('Error fetching workspaces:', error);
-    res.status(500).json({ error: 'Failed to fetch workspaces' });
-  }
-}) as express.RequestHandler
+router.get(
+  '/workspaces',
+  isAuthenticated,
+  (async (req, res) => {
+    try {
+      const response = await axios.get('https://api.clickup.com/api/v2/team', {
+        headers: {
+          'Authorization': `Bearer ${getAccessToken(req)}`
+        }
+      });
+      res.json(response.data);
+    } catch (error) {
+      console.error('Error fetching workspaces:', error);
+      res.status(500).json({ error: 'Failed to fetch workspaces' });
+    }
+  }) as express.RequestHandler
 );
 
 // Get tasks (you'll need to provide a list_id)
-router.get('/tasks/:listId', isAuthenticated, async (req, res) => {
-  try {
-    const response = await axios.get(`https://api.clickup.com/api/v2/list/${req.params.listId}/task`, {
-      headers: {
-        'Authorization': `Bearer ${getAccessToken(req)}`
-      }
-    });
-    res.json(response.data);
-  } catch (error) {
-    console.error('Error fetching tasks:', error);
-    res.status(500).json({ error: 'Failed to fetch tasks' });
-  }
-}) as express.RequestHandler
+router.get(
+  '/tasks/:listId',
+  isAuthenticated,
+  (async (req, res) => {
+    try {
+      const response = await axios.get(`https://api.clickup.com/api/v2/list/${req.params.listId}/task`, {
+        headers: {
+          'Authorization': `Bearer ${getAccessToken(req)}`
+        }
+      });
+      res.json(response.data);
+    } catch (error) {
+      console.error('Error fetching tasks:', error);
+      res.status(500).json({ error: 'Failed to fetch tasks' });
+    }
+  }) as express.RequestHandler
 );
 
 // Create a webhook
