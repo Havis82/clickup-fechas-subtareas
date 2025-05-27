@@ -44,7 +44,7 @@ router.get(
       console.error('Error fetching user info:', error);
       res.status(500).json({ error: 'Failed to fetch user info' });
     }
-  }) as express.RequestHandler
+  })
 );
 
 // Get workspaces
@@ -63,7 +63,7 @@ router.get(
       console.error('Error fetching workspaces:', error);
       res.status(500).json({ error: 'Failed to fetch workspaces' });
     }
-  }) as express.RequestHandler
+  })
 );
 
 // Get tasks (you'll need to provide a list_id)
@@ -82,7 +82,7 @@ router.get(
       console.error('Error fetching tasks:', error);
       res.status(500).json({ error: 'Failed to fetch tasks' });
     }
-  }) as express.RequestHandler
+  })
 );
 
 // Create a webhook
