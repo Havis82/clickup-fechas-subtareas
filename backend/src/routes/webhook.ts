@@ -1,5 +1,5 @@
 
-import express from 'express';
+import express, {Request, Response } from 'express';
 import axios from 'axios';
 import crypto from 'crypto';
 
@@ -63,7 +63,7 @@ async function syncDueDateToSubtasks(parentTaskId: string) {
 }
 
 // Manejador del webhook
-router.post('/clickup', async (req: Request, res: Response) => {
+router.post('/clickup', async (req: Request, res: Response): Promise<any> => {
   const { event, task_id } = req.body;
 
   if (['taskCreated', 'taskUpdated'].includes(event)) {
