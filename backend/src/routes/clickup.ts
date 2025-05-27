@@ -122,7 +122,7 @@ router.post('/webhook', isAuthenticated, async (req: express.Request, res: expre
 });
 
 // List webhooks
-router.get('/webhooks/:workspace_id', isAuthenticated, async (req: express.Request, res: express.Response) => {
+router.get('/webhooks/:workspace_id', isAuthenticated, async (req: express.Request, res: express.Response): Promise<void> => {
   try {
     const { workspace_id } = req.params;
     
