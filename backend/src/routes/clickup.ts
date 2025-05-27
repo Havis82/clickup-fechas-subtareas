@@ -32,7 +32,7 @@ const getAccessToken = (req: express.Request): string => {
 router.get(
   '/user',
   isAuthenticated,
-  async (req: express.Request, res: express.Response): Promise<void> => {
+  async (req: express.Request, res: express.Response): Promise<any> => {
     try {
       const response = await axios.get('https://api.clickup.com/api/v2/user', {
         headers: {
@@ -51,7 +51,7 @@ router.get(
 router.get(
   '/workspaces',
   isAuthenticated,
-  async (req: express.Request, res: express.Response): Promise<void> => {
+  async (req: express.Request, res: express.Response): Promise<any> => {
     try {
       const response = await axios.get('https://api.clickup.com/api/v2/team', {
         headers: {
@@ -70,7 +70,7 @@ router.get(
 router.get(
   '/tasks/:listId',
   isAuthenticated,
-  async (req: express.Request, res: express.Response): Promise<void> => {
+  async (req: express.Request, res: express.Response): Promise<any> => {
     try {
       const response = await axios.get(`https://api.clickup.com/api/v2/list/${req.params.listId}/task`, {
         headers: {
@@ -86,7 +86,7 @@ router.get(
 );
 
 // Create a webhook
-router.post('/webhook', isAuthenticated, async (req: express.Request, res: express.Response) => {
+router.post('/webhook', isAuthenticated, async (req: express.Request, res: express.Response): Promise<any> => {
   try {
     const { workspace_id, endpoint } = req.body;
     
@@ -122,7 +122,7 @@ router.post('/webhook', isAuthenticated, async (req: express.Request, res: expre
 });
 
 // List webhooks
-router.get('/webhooks/:workspace_id', isAuthenticated, async (req: express.Request, res: express.Response): Promise<void> => {
+router.get('/webhooks/:workspace_id', isAuthenticated, async (req: express.Request, res: express.Response): Promise<any> => {
   try {
     const { workspace_id } = req.params;
     
